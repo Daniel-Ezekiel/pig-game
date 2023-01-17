@@ -107,6 +107,16 @@ h2 + span {
   gap: 1rem;
 }
 
+.die-img {
+  height: 5rem;
+  width: 5rem;
+
+  position: absolute;
+  top: 50%;
+  right: 10%;
+  transform: translateY(-50%);
+}
+
 @media screen and (min-width: 640px) {
   main {
     flex-direction: row;
@@ -142,6 +152,15 @@ h2 + span {
 
   .controls {
     height: max-content;
-    top: 87%;
+    top: 68.5%;
+  }
+
+  .die-img {
+    width: 7rem;
+    height: 7rem;
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
   }
 }
