@@ -65,7 +65,7 @@ function holdScore() {
     document.querySelector('.player2-current').textContent = currentScore[1];
 
     if (totalScore[1] >= 100)
-      document.querySelector('.player1-current').textContent = 'WINNER! 🏆';
+      document.querySelector('.player2-current').textContent = 'WINNER! 🏆';
   }
 }
 
