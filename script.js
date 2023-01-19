@@ -11,9 +11,7 @@ const player1 = document.querySelector('.player1');
 const player2 = document.querySelector('.player2');
 
 function switchPlayer() {
-  const player1Status = player1.classList.contains('active');
-
-  if (player1Status) {
+  if (player1.classList.contains('active')) {
     player1.classList.remove('active');
     player2.classList.add('active');
   } else {
@@ -90,5 +88,5 @@ function startNewGame() {
   const dieImg = document.querySelectorAll('.die-img');
   if (dieImg) dieImg.forEach(dieImg => dieImg.remove());
 
-  switchPlayer();
+  if (!player1.classList.contains('active')) switchPlayer();
 }
