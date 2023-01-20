@@ -39,7 +39,7 @@ function changeTextContent(className, content) {
   document.querySelector(className).textContent = content;
 }
 function checkWinner(score, player) {
-  if (score >= 20) {
+  if (score >= 100) {
     changeTextContent(`.${player}-current`, 'WINNER! 🏆');
     dieImg.classList.add('hidden');
     playing = false;
