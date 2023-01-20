@@ -7,6 +7,8 @@ const btnRoll = document.querySelector('.btn-roll');
 const btnHold = document.querySelector('.btn-hold');
 const btnReset = document.querySelector('.btn-reset');
 
+const dieImg = document.querySelector('.die-img');
+
 const player1 = document.querySelector('.player1');
 const player2 = document.querySelector('.player2');
 
@@ -20,21 +22,16 @@ function switchPlayer() {
   }
 }
 
-function changeTextContent(className, content) {
-  document.querySelector(className).textContent = content;
-}
+const changeTextContent = (className, content) =>
+  (document.querySelector(className).textContent = content);
 
-btnRoll.addEventListener('click', rollDice);
-function rollDice() {
+btnRoll.addEventListener('click', function () {
   const rollValue = Math.ceil(Math.random() * 6);
 
-  const dieImg = document.createElement('img');
-  dieImg.classList.add('die-img');
   dieImg.src = `./img/dice-${rollValue}.png`;
-  document.querySelector('main').appendChild(dieImg);
+  dieImg.classList.remove('hidden');
 
   const isPlayer1Active = player1.classList.contains('active');
-
   if (rollValue > 1) {
     isPlayer1Active
       ? (currentScore[0] += rollValue)
@@ -48,10 +45,9 @@ function rollDice() {
 
     switchPlayer();
   }
-}
+});
 
-btnHold.addEventListener('click', holdScore);
-function holdScore() {
+btnHold.addEventListener('click', function () {
   const isPlayer1Active = player1.classList.contains('active');
 
   if (isPlayer1Active) {
@@ -73,10 +69,9 @@ function holdScore() {
     if (totalScore[1] >= 100)
       changeTextContent('.player2-current', 'WINNER! 🏆');
   }
-}
+});
 
-btnReset.addEventListener('click', startNewGame);
-function startNewGame() {
+btnReset.addEventListener('click', function () {
   currentScore = [0, 0];
   changeTextContent('.player1-current', currentScore[0]);
   changeTextContent('.player2-current', currentScore[1]);
@@ -85,8 +80,6 @@ function startNewGame() {
   changeTextContent('.player1-score', totalScore[0]);
   changeTextContent('.player2-score', totalScore[1]);
 
-  const dieImg = document.querySelectorAll('.die-img');
-  if (dieImg) dieImg.forEach(dieImg => dieImg.remove());
-
+  dieImg.classList.add('hidden');
   if (!player1.classList.contains('active')) switchPlayer();
-}
+});
